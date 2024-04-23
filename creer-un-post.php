@@ -1,4 +1,5 @@
 <?php
+
 # Inclusion du header
 require_once './partials/header.php';
 
@@ -16,27 +17,47 @@ $title = $description = $id_forum = $id_user = null;
 # 2. Vérification des données $_POST
 if (!empty($_POST)) {
 
-    # TODO Récupération des informations $_POST
-    # TODO Vérification des informations
+    # Récupération des informations $_POST
+    $title = $_POST['title'] ?? null;
+    $description = $_POST['description'] ?? null;
+    $id_forum = $_POST['id_forum'] ?? null;
+    $id_user = $_SESSION['user']['id_user'] ?? null;
+    }
+
+    # Vérification des informations
     $errors = [];
 
-    # TODO Vérification du titre
-    # TODO Vérification de la description
-    # TODO Vérification du forum
+    # Vérification du titre
+    if (empty($title)) {
+        $errors['title'] = 'Le titre est requis.';
+    } elseif (strlen($title) > 255) {
+        $errors['title'] = 'Le titre ne doit pas dépasser 255 caractères.';
+    }
+
+    # Vérification de la description
+    if (empty($description)) {
+        $errors['description'] = 'La description est requise.';
+    } elseif (strlen($description) > 5000) { // Example length limit
+        $errors['description'] = 'La description ne doit pas dépasser 5000 caractères.';
+    }
+
+    # Vérification du forum
+    if (empty($id_forum)) {
+        $errors['id_forum'] = 'Le forum est requis.';
+    }
 
     # Insertion dans la BDD
     if (empty($errors)) {
         try {
-            # TODO Insertion du Post dans la BDD
-            if ($id_post) {
-                addFlash('success', 'Félicitation votre article est en ligne !');
-                redirect("post.php?id=$id_post");
-            }
+            # Insertion du Post dans la BDD
+            $id_post = insertPost($title, $description, $id_forum, $_SESSION['user']['ID_USER']);
+            # Redirection vers la page de l'article
+            redirect("post.php?id=$id_post");
         } catch (Exception $exception) {
             dd($exception->getMessage());
         }
     }
-}
+
 
 
 ?>
@@ -60,16 +81,6 @@ if (!empty($_POST)) {
                     <form id="createPostForm"
                           method="post">
 
-                        <!-- Affichage d'une notification d'erreur -->
-                        <?php if (!empty($errors)): ?>
-                            <div class="alert alert-danger mt-4">
-                                <u>Une erreur est survenue dans la validation de vos données :</u> <br>
-                                <?php foreach ($errors as $error) : ?>
-                                    <?= $error ?> <br>
-                                <?php endforeach; ?>
-                            </div>
-                        <?php endif; ?>
-
                         <div class="mb-3">
                             <label for="title" class="form-label">Titre</label>
                             <input type="text" class="form-control <?= isset($errors['title']) ? 'is-invalid' : '' ?>"
@@ -83,20 +94,20 @@ if (!empty($_POST)) {
                             <label for="ID_FORUM" class="form-label">Catégorie</label>
                             <select
                                     id="ID_FORUM" name="id_forum"
-                                    class="form-control <?= isset($errors['ID_FORUM']) ? 'is-invalid' : '' ?>"
+                                    class="form-control <?= isset($errors['id_forum']) ? 'is-invalid' : '' ?>"
                                     name="id_forum">
 
                                 <option selected disabled value="0">-- Choisissez un forum --</option>
                                 <?php foreach ($forums as $forum): ?>
                                     <option
-                                        <?= $forum['ID_FORUM'] == $id_forum ? 'selected' : '' ?>
-                                            value="<?= $forum['ID_FORUM'] ?>">
-                                        <?= $forum['NAME'] ?>
+                                        <?= $forum['id_forum'] == $id_forum ? 'selected' : '' ?>
+                                            value="<?= $forum['id_forum'] ?>">
+                                        <?= $forum['name'] ?>
                                     </option>
                                 <?php endforeach ?>
                             </select>
                             <div class="invalid-feedback">
-                                <?= $errors['ID_FORUM'] ?? '' ?>
+                                <?= $errors['id_forum'] ?? '' ?>
                             </div>
                         </div>
 

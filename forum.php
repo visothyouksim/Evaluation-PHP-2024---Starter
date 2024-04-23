@@ -13,7 +13,10 @@ require_once './helpers/post.helper.php';
 
 $id = isset($_GET['id']) ? intval($_GET['id']) : null;
 
-$posts = getPostsByForumId($id);
+if ($id !== null) {
+    $posts = getPostsByForumId($id);
+} else {
+}
 
 
 ?>

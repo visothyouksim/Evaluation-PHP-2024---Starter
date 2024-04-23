@@ -6,19 +6,15 @@
  * @param int $id
  * @return array|false
  */
-function getPostsByForumId(int $id)
-{
-    global $dbh;
+function getPostsByForumId(int $id) {
+    global $dbh; // Assurez-vous que $dbh est votre objet PDO connecté à la base de données
 
-    # TODO Ecrire la requete SQL
-    $sql = 'SELECT * FROM post WHERE id_post = :id';
-
-    $query = $dbh->prepare($sql);
+    $query = $dbh->prepare("SELECT * FROM post WHERE id_forum = :id");
     $query->bindValue(':id', $id, PDO::PARAM_INT);
     $query->execute();
-    return $query->fetchAll();
-}
 
+    return $query->fetchAll(PDO::FETCH_ASSOC);
+}
 /**
  * Permet de récupérer un POST
  * via son ID_POST
@@ -72,12 +68,11 @@ function insertPost(
     string $id_forum,
     string $id_user
 ): false|string {
+
     global $dbh;
-
     
-    $sql = 'INSERT INTO posts (title, description, forum_id, user_id, created_at, updated_at) VALUES (:title, :description, :id_forum, :id_user, :created_at, :updated_at)';
+    $sql = 'INSERT INTO post (title, description, id_forum, id_user, createdat, updatedat) VALUES (:title, :description, :id_forum, :id_user, :created_at, :updated_at)';
 
-    # TODO Complétez la requete
     $query = $dbh->prepare($sql);
     $query->bindValue(':title', $title, PDO::PARAM_STR);
     $query->bindValue(':description', $description, PDO::PARAM_STR);
