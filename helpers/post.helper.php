@@ -49,7 +49,7 @@ function getMessagesByPostId(int $id)
     global $dbh;
 
     # TODO Ecrire la requete SQL
-    $sql = 'SELECT * FROM messages WHERE post_id = :id';
+    $sql = 'SELECT * FROM message WHERE id_message = :id';
 
     $query = $dbh->prepare($sql);
     $query->bindValue(':id', $id, PDO::PARAM_INT);
