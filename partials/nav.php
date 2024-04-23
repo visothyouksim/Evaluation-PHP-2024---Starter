@@ -17,8 +17,8 @@
                 </li>
                 <?php foreach ($forums as $forum) { ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="forum.php?id=<?= $forum['ID_FORUM'] ?>">
-                            <?= $forum['NAME'] ?>
+                        <a class="nav-link" href="forum.php?id=<?= $forum['id_forum'] ?>">
+                            <?= $forum['name'] ?>
                         </a>
                     </li>
                 <?php } ?>

@@ -11,26 +11,26 @@ function getForums(): array
     global $dbh;
 
     # J'effectue ma requête de récupération des catégories
-    $query = $dbh->query('ECRIRE LA REQUETE SQL');
+    $query = $dbh->query('SELECT id_forum, name FROM forum');
 
     # Je retourne le résultat
-    # return $query->fetchAll();
-    return [];
+    return $query->fetchAll(PDO::FETCH_ASSOC);
 }
 
 /**
  * Permet de récupérer les forums
  * de la BDD via l'ID du Forum.
  */
-function getForumById(int $id) {
+function getForumById(int $id)
+{
 
     global $dbh;
 
     # TODO Ecrire la requête SQL
-    $sql = '';
+    $sql = 'SELECT id_forum, name FROM forum WHERE id_forum = :id';
 
     $query = $dbh->prepare($sql);
     $query->bindValue(':id', $id, PDO::PARAM_INT);
     $query->execute();
-    return $query->fetch();
+    return $query->fetch(PDO::FETCH_ASSOC);
 }
