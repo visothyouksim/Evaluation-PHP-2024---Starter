@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ECF PHP 2024</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="ecf--ccp-2--3---php">ECF : CCP 2 &amp; 3 - PHP</h1>
+<p>Pour cette évaluation, vous avez la possibilité de vous aider de l’ensemble des notions acquise en cours de formation, vous avez le droit de vous aider d’internet. L’intervenant est à votre disposition en cas d’incompréhension.</p>
+<h2 id="cadre--explication">Cadre &amp; Explication</h2>
+<p>Félicitation, vous venez d’intégrer notre équipe de développement PHP. Notre entreprise travail au développement d’une solution de Forum en ligne autour de la thématique de l’actualité mondiale. Ce projet, permettra à notre groupe médias de fédérer des utilisateurs autour de notre marque.</p>
+<h2 id="consigne">Consigne</h2>
+<p>Un stagiaire à commencer le développement de notre projet, cependant, il n’est pas parvenu à tout réaliser. En vous appuyant sur le code déjà réalisé, nous avons besoin d’obtenir une version finalisé de l’application à présenter aux investisseurs à la fin de la journée.</p>
+<h3 id="modélisation-3pts-">1. Modélisation (3pts) :</h3>
+<p>Notre stagiaire n’étant pas concepteur, n’a pas su réaliser la modélisation MERISE de notre base de donnée.<br>
+Pouvez-vous nous faire parvenir votre MCD, MLD et MPD de notre projet ?<br>
+Les règles de gestion sont les suivantes :</p>
+<ol>
+<li>Les utilisateurs ont la possibilité de s’inscrire avec leur prénom, nom, email et mot de passe. Ils ont une ROLE_USER par défaut et peuvent répondre a des “POST” via des “MESSAGE”. Les Administrateurs ont un ROLE_ADMIN et ont la possibilité de créer des “POST” afin de lancer de nouvelles discussions.</li>
+<li>Un post est représenté par son titre et sa description. Il est rédigé par un utilisateur ayant les droits nécessaires. Un post est obligatoirement rattaché à un ‘FORUM’ qui fait office de catégorie. Ex : Politique, Economie, Société, etc …</li>
+<li>Un utilisateur à la possibilité de rédiger un ‘MESSAGE’ a propos d’un POST afin d’apporter son avis et ainsi discuter sur le sujet. Un POST aura alors plusieurs ‘MESSAGE’ de plusieurs ‘USER’. Un message est représenter par un contenu texte.</li>
+</ol>
+<blockquote>
+<p>REMISE : Vous ferez une capture d’écran de votre modélisation que vous mettrez dans le dossier <code>_Modélisation</code></p>
+</blockquote>
+<h3 id="base-de-donnée--requête-sql-5pts">2. Base de donnée &amp; Requête SQL (5pts)</h3>
+<p>Notre stagiaire n’ayant pas une grande expérience du SQL n’est pas parvenu à construire les différentes requêtes. Il vous incombe donc la charge de les réaliser afin de rendre fonctionnelle le projet.</p>
+<blockquote>
+<p>Un export de la base de donnée est à votre disposition dans le dossier <code>_Export</code>. Appuyez-vous dessus.</p>
+</blockquote>
+<p>Vous devez réaliser les requêtes SQL se trouvant des les fichiers suivants :</p>
+<ul>
+<li>helpers/forum.helper.php</li>
+<li>helpers/post.helper.php</li>
+</ul>
+<h3 id="finalisation-du-développement-8pts">3. Finalisation du développement (8pts)</h3>
+<p>Notre stagiaire n’a pas reussi à terminer à temps le développement. En vous appuyant sur le code déjà réaliser, vous devez rendre entièrement fonctionnelle les pages suivantes :</p>
+<ol>
+<li>index.php</li>
+<li>forum.php</li>
+<li>post.php</li>
+<li>creer-un-post.php <code>(Nécessite d'être authentifié avec un ROLE_ADMIN)</code></li>
+</ol>
+<h3 id="oublie-de-dernière-minute-4pts">3. Oublie de dernière minute (4pts)</h3>
+<p>Nous allions oublié, après avoir fait un point aujourd’hui avec notre board, avant notre réunion de ce soir, nous avons impérativement besoin que les utilisateurs ayant un ROLE_USER puisse créer des messages depuis la page <code>post.php</code>…</p>
+<p>Notre stagiaire à malheureusement complètement oublié cette fonctionnalité. Nous comptons sur vous pour la mener à bien.</p>
+<h2 id="remise-de-lecf">Remise de l’ECF</h2>
+<p>Vous déposerez votre projet au format ZIP ou 7z sur discord dans un channel : <code>#remise-ecf</code><br>
+Vous inclurez votre code &amp; votre modélisation;</p>
+<hr>
+<p>Bon courage,<br>
+Written with ❤️ by <a href="https://github.com/hugoliegeard">Hugo LIEGEARD</a>.</p>
+</div>
+</body>
+
+</html>
