@@ -10,9 +10,11 @@ if(!isset($_GET['id'])) {
     redirect('index.php');
 }
 
+$id = isset($_GET['id']) ? intval($_GET['id']) : null;
+
 # Récupération de l'article
 $post = getPostById($id);
-$messages = getMessagesByPostId($post['ID_POST']);
+// $messages = getMessagesByPostId($post['ID_POST']);
 
 if (!$post) {
     redirect('erreur404.php');
@@ -46,7 +48,7 @@ if (!$post) {
 
                     <?php foreach ($messages as $message): ?>
                         <div class="alert alert-info">
-                            <?= $message['CONTENT'] ?>
+                            <?= $message['content'] ?>
                         </div>
                     <?php endforeach ?>
 

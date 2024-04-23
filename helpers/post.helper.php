@@ -30,7 +30,7 @@ function getPostById(int $id)
     global $dbh;
 
     # TODO Ecrire la requete SQL
-    $sql = 'SELECT * FROM posts WHERE id_post = :id';
+    $sql = 'SELECT * FROM post WHERE id_post = :id';
 
     $query = $dbh->prepare($sql);
     $query->bindValue(':id', $id, PDO::PARAM_INT);
