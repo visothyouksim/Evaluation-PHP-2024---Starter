@@ -1,15 +1,15 @@
 <?php
-    # Inclusion du header
-    require_once './partials/header.php';
+# Inclusion du header
+require_once './partials/header.php';
 
-    /*
+/*
      * La superglobale GET me permet de récupérer les informations
      * passées dans mon URL. Ex. categorie.php?slug=politique
      */
-    # var_dump($_GET);
+# var_dump($_GET);
 
-    // Assuming the ID is coming from a query string
-    $id = isset($_GET['id']) ? intval($_GET['id']) : null;
+// Assuming the ID is coming from a query string
+$id = isset($_GET['id']) ? intval($_GET['id']) : null;
 
 ?>
 
@@ -20,7 +20,10 @@
     <!-- Titre de la page -->
     <div class="p-3 mx-auto text-center">
         <h1 class="display-4 text-capitalize">
-            <?= $forum['name'] ?>
+            <?php foreach ($forums as $forum) : ?>
+                <?php if ($forum['id_forum'] == $id) echo $forum['name']; ?>
+            <?php endforeach; ?>
+
         </h1>
     </div>
 
@@ -29,7 +32,7 @@
     <div class="py-5 bg-light">
         <div class="container">
             <div class="row">
-                <?php foreach ($posts as $post):
+                <?php foreach ($posts as $post) :
                     # On fait un copier / coller du fichier dans la boucle
                     # Il y aura autant d'include que de tour de boucle
                     include 'partials/forum/_post-card.php';
