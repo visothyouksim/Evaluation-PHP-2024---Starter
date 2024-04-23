@@ -11,18 +11,6 @@
     // Assuming the ID is coming from a query string
     $id = isset($_GET['id']) ? intval($_GET['id']) : null;
 
-    if ($id !== null) {
-        $forum = getForumById($id);
-        if (is_array($forum)) {
-            echo $forum['NAME'];
-        } else {
-            echo "Forum not found.";
-        }
-    } else {
-        // Handle the case where the ID is not provided or is not a valid integer
-        echo "Invalid forum ID.";
-    }
-
 ?>
 
 <!-- Contenu de notre page -->
@@ -32,7 +20,7 @@
     <!-- Titre de la page -->
     <div class="p-3 mx-auto text-center">
         <h1 class="display-4 text-capitalize">
-            <?= $forum['NAME'] ?>
+            <?= $forum['name'] ?>
         </h1>
     </div>
 
