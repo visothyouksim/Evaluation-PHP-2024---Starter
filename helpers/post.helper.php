@@ -54,6 +54,27 @@ function getMessagesByPostId(int $id)
 }
 
 /**
+ * Permet d'insérer un message
+ * @param string $content Le contenu du message
+ * @param int $userId L'ID de l'utilisateur connecté
+ * @param int $postId L'ID du post sur lequel le message doit être laissé
+ * @return false|string
+ */
+function insertMessage(string $content, int $userId, int $postId): false|string {
+    global $dbh;
+
+    $sql = 'INSERT INTO message (content, id_user, id_post, createdat) VALUES (:content, :userId, :postId, :createdAt)';
+
+    $query = $dbh->prepare($sql);
+    $query->bindValue(':content', $content, PDO::PARAM_STR);
+    $query->bindValue(':userId', $userId, PDO::PARAM_INT);
+    $query->bindValue(':postId', $postId, PDO::PARAM_INT);
+    $query->bindValue(':createdAt', (new DateTime())->format('Y-m-d H:i:s'), PDO::PARAM_STR);
+
+    return $query->execute() ? $dbh->lastInsertId() : false;
+}
+
+/**
  * Permet l'insertion d'un POST
  * dans la base de donnée.
  * @param string $title
