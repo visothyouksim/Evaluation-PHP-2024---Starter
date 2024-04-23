@@ -30,6 +30,8 @@ if (!$post) {
     <!-- .py-5.bg-light>.container>.row>.col-md-4*6>.card.shadow-sm -->
     <div class="py-5 bg-light">
         <div class="container">
+             <!-- Affichage des messages flash -->
+             <?php include 'partials/flash/_flash.message.php' ?>
             <div class="row">
 
                 <div class="col">

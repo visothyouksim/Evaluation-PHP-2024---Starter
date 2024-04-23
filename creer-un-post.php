@@ -51,6 +51,9 @@ if (!empty($_POST)) {
         try {
             # Insertion du Post dans la BDD
             $id_post = insertPost($title, $description, $id_forum, $_SESSION['user']['ID_USER']);
+
+            # Alerte de confirmation
+            addFlash('success', 'Article publié avec succès !');
             # Redirection vers la page de l'article
             redirect("post.php?id=$id_post");
         } catch (Exception $exception) {
