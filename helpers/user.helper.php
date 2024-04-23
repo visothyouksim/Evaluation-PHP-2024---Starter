@@ -36,11 +36,11 @@ function insertUser(string $firstname,
                 VALUES (:firstname, :lastname, :email, :password, :role)';
 
     $query = $dbh->prepare($sql);
-    $query->bindValue('firstname', $firstname);
-    $query->bindValue('lastname', $lastname);
-    $query->bindValue('email', $email);
-    $query->bindValue('password', password_hash($password, PASSWORD_DEFAULT));
-    $query->bindValue('role', $roles);
+    $query->bindValue(':firstname', $firstname);
+    $query->bindValue(':lastname', $lastname);
+    $query->bindValue(':email', $email);
+    $query->bindValue(':password', password_hash($password, PASSWORD_DEFAULT));
+    $query->bindValue(':role', $roles);
 
     return $query->execute() ? $dbh->lastInsertId() : false;
 }
